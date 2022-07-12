@@ -50,7 +50,10 @@ def janken
             p "あいこで...(press g or c or p)"
             janken
         end
-        
+
+    else
+        p "もう一度入力してください"
+        janken
     end
 end
 
