@@ -3,8 +3,20 @@
 @lose = 0
 
 puts "何本勝負?(press 1 or 3 or 5)"
-@match = gets.to_i
-puts "#{@match}勝負選びました"
+
+def game_count
+    @match = gets.to_i
+    if @match == 1
+        puts "#{@match}勝負選びました"
+    elsif @match == 3
+        puts "#{@match}勝負選びました"
+    elsif @match == 5
+        puts "#{@match}勝負選びました"
+    else
+        p "もう一度入力してください"
+        game_count
+    end
+end
 
 def janken
     cpu = ['g', 'c', 'p'].sample
@@ -67,6 +79,8 @@ def judge
         p "#{@win}勝#{@lose}敗であなたの負け"
     end
 end
+
+game_count
 
 i = 0
 while i < @match do 
