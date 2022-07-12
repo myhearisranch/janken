@@ -6,63 +6,51 @@ puts "何本勝負?(press 1 or 3 or 5)"
 @match = gets.to_i
 puts "#{@match}勝負選びました"
 
-
-
 def janken
+    cpu = ['g', 'c', 'p'].sample
+    you = gets.chomp
 
-    i = 0
+    p "cpu...#{cpu}"
+    p "you...#{you}"
 
-    while i < @match do 
-
-        p "#{i+1}本目"
-        p "じゃんけん(press g or c or p)"
-
-        cpu = ['g', 'c', 'p'].sample
-        you = gets.chomp
-
-        p "cpu...#{cpu}"
-        p "you...#{you}"
-
-        if you == "g"
-            if cpu == "g"
-                p "あいこで...(press g or c or p)"
-                janken
-            elsif cpu == "c"
-                p "勝ち!"
-                @win += 1
-            elsif cpu == "p"
-                p "負け!"
-                @lose += 1
-            end
-
-        elsif you == "c"
-
-            if cpu == "g"
-                p "負け!"
-                @lose += 1
-            elsif cpu == "c"
-                p "あいこで...(press g or c or p)"
-                janken
-            elsif cpu == "p"
-                p "勝ち!"
-                @win += 1
-            end
-        
-        elsif you == "p"
-
-            if cpu == "g"
-                p "勝ち!"
-                @win += 1
-            elsif cpu == "c"
-                p "負け!"
-                @lose += 1
-            elsif cpu == "p"
-                p "あいこで...(press g or c or p)"
-                janken
-            end
-        
+    if you == "g"
+        if cpu == "g"
+            p "あいこで...(press g or c or p)"
+            janken
+        elsif cpu == "c"
+            p "勝ち!"
+            @win += 1
+        elsif cpu == "p"
+            p "負け!"
+            @lose += 1
         end
-        i += 1
+
+    elsif you == "c"
+
+        if cpu == "g"
+            p "負け!"
+            @lose += 1
+        elsif cpu == "c"
+            p "あいこで...(press g or c or p)"
+            janken
+        elsif cpu == "p"
+            p "勝ち!"
+            @win += 1
+        end
+        
+    elsif you == "p"
+
+        if cpu == "g"
+            p "勝ち!"
+            @win += 1
+        elsif cpu == "c"
+            p "負け!"
+            @lose += 1
+        elsif cpu == "p"
+            p "あいこで...(press g or c or p)"
+            janken
+        end
+        
     end
 end
 
@@ -77,7 +65,14 @@ def judge
     end
 end
 
-janken
+i = 0
+while i < @match do 
+    p "#{i+1}本目"
+    p "じゃんけん(press g or c or p)"
+    janken
+    i += 1
+end
+
 judge
 
 
